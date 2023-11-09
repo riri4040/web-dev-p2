@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Card Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style> 
+    </style>
+    <script>
+        let score = 0;
+        let picked = false;
+        let justPickedPic = "";
+        let justPickedId = "";
+        function initialize(){
+            score = 0;
+        }
+        function pressed(image,card){
+            x = "";
+            c = "";
+            score++;
+            document.getElementById(card).src = image;
+            if(picked === false){
+                justPickedPic = image;
+                justPickedId = card;
+                picked = true;
+            } else{
+                if(justPickedPic === image){
+                    document.getElementById(card).src = image;
+                    document.getElementById(justPickedId).src = image;
+                    picked = false;
+                    justPicked = "";
+                    justPickedId = "";
+                }else{
+                    setTimeout(()=>{
+                    let x = document.getElementById(justPickedId);
+                    x.src = "back.jpg";
+                    let c = document.getElementById(card);
+                    c.src = "back.jpg";
+                    picked = false;
+                    
+                    },600);
+                }
+            }
+            update();
+        }
+        function update(){
+            y = document.getElementById("score");
+            y.innerHTML = "Score:" + score;
+        }
+        function redo(){
+            location.reload();
+        }
+    </script>
+</head>
+<body onload="initialize();">
+    <div class="centered">
+    <h1> Matching Card Game</h1> </div>
+    <h4 style="color: rgb(197, 32, 117);"> Intro: </h4>
+    <p style="color: rgb(255, 72, 179);"> This is a matching game. Collect all the pairs to win.</p>
+    <h4 style="color: rgb(197, 32, 117);"> Instructions: </h4>
+    <p style="color: rgb(255, 72, 179);"> Click on a card to reveal a hidden image. 
+        Each click is counted toward your score.
+        The objective of the game is to click on two cards that produce a match.
+        Click the reset button to start over. </p>
+   
+    <span class="container">
+        <img class="card" onclick="pressed('catt.jpeg','pic1');" id = "pic1" src="back.jpg" width= "90" height= "90"></div>
+        <img class="card" onclick="pressed('dogg.jpeg','pic2');" id = "pic2" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('bunny.jpeg','pic3');" id = "pic3" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('Parrot.jpeg','pic4');" id = "pic4" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('turtle.jpeg','pic5');" id = "pic5" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('cow.jpeg','pic6');" id = "pic6" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('Parrot.jpeg','pic7');" id = "pic7" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('catt.jpeg','pic8');" id = "pic8" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('panda.jpeg','pic9');" id = "pic9" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('cow.jpeg','pic10');" id = "pic10" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('dogg.jpeg','pic11');" id = "pic11" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('turtle.jpeg','pic12');" id = "pic12" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('koala.jpeg','pic13');" id = "pic13" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('panda.jpeg','pic14');" id = "pic14" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('koala.jpeg','pic15');" id = "pic15" src="back.jpg" width= "90" height= "90"> </div>
+        <img class="card" onclick="pressed('bunny.jpeg','pic16');" id = "pic16" src="back.jpg" width= "90" height= "90"> </div>
+    </div>
+    <h2 id="score" style="color: rgb(255, 0, 149);">Score: 0</h2>
+    <button onclick = "redo();" id = "reset"><h2>Reset</h2></button>
+</body>
+</html>
